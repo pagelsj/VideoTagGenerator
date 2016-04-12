@@ -1,0 +1,31 @@
+<section class="col-sm-6">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Please add the sizes for your video</h3>
+		</div>
+		<div class="panel-body">
+			
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon1">Video Height</span>
+					<input type="text" class="form-control" ng-disabled="fluid" placeholder="Video Height" ng-model="videoSize.height">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon1">Video Width</span>
+					<input type="text" class="form-control" ng-disabled="fluid" placeholder="Video Width" ng-model="videoSize.width">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" ng-model="fluid"> Fluid Sizing (Fill the container)
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

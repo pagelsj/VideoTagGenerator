@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>VideoTagGen</title>
+		
+		<link rel="stylesheet" href="./css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="./css/bootstrap-theme.min.css"/>
+		<link href="http://vjs.zencdn.net/5.3.0/video-js.css" rel="stylesheet">
+		<!--<link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet"> -->
+		<link rel="stylesheet" href="./css/ts-dark-skin.css"/>
+		<link rel="stylesheet" href="./css/ts-light-skin.css"/>
+		<style>
+			.video-js{
+				margin:20px auto;
+			}
+		</style>
+		
+	</head>
+	<body>
+
+		<div ng-controller="VideoTagGenController">
+			
+			<div class="container">
+				<nav class="mainNav">&nbsp;</nav>
+			</div>
+			<div class="componentContainer container">
+				
+				<!--
+					MODULE 	: REGULAR VIDEO PATH
+					TITLE 	: "Please add the paths to your videos"
+				-->
+				<div class="row">
+					<div class="videoPaths">&nbsp;</div>
+				</div>
+
+				<!-- OPTIONS ARE HIDDEN IF NO VIDEO URL IS GIVEN -->
+				<div ng-show="videoFormat.mp4 || videoFormat.ogg || videoFormat.webm">
+					
+
+					<!-- 
+						MODULE 	: LARGE VIDEO PATH
+						TITLE 	: "You can now add fullscreen videos also"
+					-->
+					<div class="row">
+						<div class="videoPathsLarge">&nbsp;</div>
+					</div>
+
+
+					<div class="row">
+						<!--
+							MODULE 	: VIDEO SIZE OPTIONS 
+							TITLE 	: "Please add the sizes for your video"
+						-->
+						<div class="videoSizes">&nbsp;</div>
+		
+						<!--
+							MODULE 	: VIDEO SKIN OPTIONS 
+							TITLE 	: "Pick a skin"
+						-->
+						<div class="videoSkinOptions">&nbsp;</div>
+					</div>
+
+
+					<!--
+						MODULE 	: POSTER IMAGE URL 
+						TITLE 	: "Add a poster image"
+					-->
+					<div class="row">
+						<div class="posterImage">&nbsp;</div>
+					</div>
+
+
+					<!--
+						MODULE 	: CUSTOM PLAY AND REPLAY BUTTONS 
+						TITLE 	: "Add custom Play and Replay buttons"
+					-->
+					<div class="row">
+						<div class="customButtons">&nbsp;</div>
+					</div>
+
+
+					<!--
+						MODULE 	: EXTRA VIDEO OPTIONS 
+						TITLE 	: "Please select any other options"
+					-->
+					<div class="row">
+						<div class="videoOptions">&nbsp;</div>
+					</div>
+
+
+					<!--
+						MODULE 	: DEFAULT VIDEOJS COMPONENT OPTIONS 
+						TITLE 	: "Video.js Components"
+					-->
+					<div class="row">
+						<div class="videoJSComponents">&nbsp;</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!--
+					MODULE : DISPLAYS THE VIDEO PREVIEW AND CODE
+			-->	
+			<div class="previewModal">&nbsp;</div>
+
+			<div class="container" style="margin-top:50px;">
+				<div class="row">
+					<footer class="footer col-sm-12">
+			            <p>Video.js Tag Generator © The Arcadia Group Ltd.</p>
+			            <p>Video.js is a free and open source HTML5 video player. Copyright <a href="http://www.brightcove.com" target="_blank">Brightcove, Inc.</a> View <a target="_blank" href="https://github.com/videojs/video.js/blob/master/LICENSE">license</a>.</p>
+			        </footer>
+		        </div>
+	        </div>
+
+		</div>
+
+		<script src="./js/vendors/angular-1.4.8.min.js"></script>
+		<script src="./js/vendors/angular-sanitize.min.js"></script>
+		<script src="./js/vendors/jquery-1.11.3.min.js"></script>
+		<script src="./js/vendors/bootstrap.min.js"></script>
+		<script src="./js/vendors/angular-input-add-on.js"></script>
+		<script src="./js/VideoTagGen.main.js"></script>
+
+		<script src="./js/services/VideoTagGen.services.js"></script>
+		<script src="./js/services/VideoTagGen.settings.js"></script>
+
+		<script src="./js/controllers/VideoTagGen.controller.js"></script>
+		
+		<script src="./js/modules/videoPaths/videoPaths.module.js"></script>
+		<script src="./js/modules/videoPathsLarge/videoPathsLarge.module.js"></script>
+		<script src="./js/modules/videoSizes/videoSizes.module.js"></script>
+		<script src="./js/modules/previewModal/previewModal.module.js"></script>
+		<script src="./js/modules/mainNav/mainNav.module.js"></script>
+		<script src="./js/modules/videoOptions/videoOptions.module.js"></script>
+		<script src="./js/modules/videoSkinOptions/videoSkinOptions.module.js"></script>
+		<script src="./js/modules/videoJSComponents/videoJSComponents.module.js"></script>
+		<script src="./js/modules/posterImage/posterImage.module.js"></script>
+		<script src="./js/modules/customButton/customButton.module.js"></script>
+
+		<script src="http://vjs.zencdn.net/5.3.0/video.js"></script>
+		<!--<script src="http://vjs.zencdn.net/4.12.0/video.js"></script>-->
+
+		<script>
+			angular.bootstrap(document, ['VideoTagGen']);
+		</script>
+		
+	</body>
+</html>
