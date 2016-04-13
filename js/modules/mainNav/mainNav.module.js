@@ -1,4 +1,6 @@
 VideoTagGen.directive("mainNav", ["VideoTagGenServices", function (VideoTagGenServices) {
+	'use strict';
+	
 	return {
 		restrict 	: "C",
 		templateUrl : "./js/modules/mainNav/mainNav.template.html",

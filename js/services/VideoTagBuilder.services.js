@@ -1,6 +1,7 @@
 var VideoTagGen = (VideoTagGen) ? VideoTagGen : {};
 
 VideoTagGen.service("VideoTagGenServices", ["$q", "settings", function ($q, settings) {
+	'use strict';
 	var that = this;
 	
 	this.createPreview = function (scope, videoContainer) {
@@ -25,6 +26,14 @@ VideoTagGen.service("VideoTagGenServices", ["$q", "settings", function ($q, sett
 				videoNode.appendChild(sourceTag);
 			}
 
+
+
+/*
+	DIRECTIVE : tracking.directive.js
+	Adds tracking
+*/
+			if(scope.trackingTag)
+				videoNode.setAttribute("trackingTagData", scope.trackingTag);
 
 
 /*

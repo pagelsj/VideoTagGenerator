@@ -1,4 +1,6 @@
 VideoTagGen.directive("previewModal", function () {
+	'use strict';
+	
 	return {
 		restrict 	: "C",
 		templateUrl : "./js/modules/previewModal/previewModal.template.html",

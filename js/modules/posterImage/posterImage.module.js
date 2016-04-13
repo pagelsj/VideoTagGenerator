@@ -1,4 +1,6 @@
 VideoTagGen.directive("posterImage", function () {
+	'use strict';
+	
 	return {
 		restrict 	: "C",
 		templateUrl : "./js/modules/posterImage/posterImage.template.html",

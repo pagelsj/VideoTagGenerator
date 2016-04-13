@@ -1,4 +1,6 @@
 VideoTagGen.directive("videoPathsLarge", function () {
+	'use strict';
+	
 	return {
 		restrict 	: "C",
 		templateUrl : "./js/modules/videoPathsLarge/videoPathsLarge.template.html",

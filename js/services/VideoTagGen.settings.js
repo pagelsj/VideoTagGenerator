@@ -1,6 +1,8 @@
 var VideoTagGen = (VideoTagGen) ? VideoTagGen : {};
 
 VideoTagGen.service("settings", ["$http", function ($http) {
+	'use strict';
+	
 	this.load = function (scope) {
 		
 		$http({

@@ -1,4 +1,6 @@
 VideoTagGen.directive("customButtons", function () {
+	'use strict';
+	
 	return {
 		restrict 	: "C",
 		templateUrl : "./js/modules/customButton/customButton.template.html",
