@@ -1,6 +1,4 @@
 VideoTagGen.directive("customButtons", function () {
-	'use strict';
-	
 	return {
 		restrict 	: "C",
 		templateUrl : "./js/modules/customButton/customButton.template.html",
@@ -9,7 +7,7 @@ VideoTagGen.directive("customButtons", function () {
 			jQuery(elem).delegate("input", "blur", function () {
 				
 
-				if(jQuery(this).val() == "" || jQuery(this).val() == scope.imageURL) {
+				if(jQuery(this).val() === "" || jQuery(this).val() == scope.imageURL) {
 					delete scope[jQuery(this).attr("data-buttonType")];
 					delete scope[jQuery(this).attr("data-buttonType")+"Styling"];
 				}

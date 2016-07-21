@@ -1,8 +1,6 @@
 var VideoTagGen = (VideoTagGen) ? VideoTagGen : {};
 
 VideoTagGen.service("settings", ["$http", function ($http) {
-	'use strict';
-	
 	this.load = function (scope) {
 		
 		$http({
@@ -11,7 +9,8 @@ VideoTagGen.service("settings", ["$http", function ($http) {
 		}).then(function successCallback(response) {
 			
 			jQuery.extend(true, scope, response.data);
-			
+			console.log("scope", scope);
+
 		}, function errorCallback(response) {
 			alert("There wass an error loading the config file. Please try again.");
 		});

@@ -1,6 +1,4 @@
 VideoTagGen.directive("videoSizes", function () {
-	'use strict';
-	
 	return {
 		restrict 	: "C",
 		templateUrl : "./js/modules/videoSizes/videoSizes.template.html",

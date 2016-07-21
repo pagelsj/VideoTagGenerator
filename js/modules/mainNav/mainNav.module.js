@@ -1,6 +1,4 @@
 VideoTagGen.directive("mainNav", ["VideoTagGenServices", function (VideoTagGenServices) {
-	'use strict';
-	
 	return {
 		restrict 	: "C",
 		templateUrl : "./js/modules/mainNav/mainNav.template.html",
@@ -9,7 +7,7 @@ VideoTagGen.directive("mainNav", ["VideoTagGenServices", function (VideoTagGenSe
 			jQuery(elem).delegate(".createPreview", "click", function () {
 
 				if(scope.enablePreview){
-					scope.videoId = "video-js-" + new Date().getTime();
+					scope.videoId = "videojs" + new Date().getTime();
 
 					VideoTagGenServices.createPreview(scope, "previewVideoContent");
 

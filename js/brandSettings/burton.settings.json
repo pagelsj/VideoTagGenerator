@@ -1,0 +1,21 @@
+{
+	"videoURL" : "http://www.burton.co.uk/cms_videos/",
+	"imageURL" : "http://media.burton.co.uk/wcsstore/Burton/images/category_icons/",
+	"availableSkins" :[
+		{
+			"name": "Default",
+			"cssClass" : "",
+			"url" : "http://vjs.zencdn.net/5.3.0/video-js.css"
+		},
+		{
+			"name" : "Burton Dark",
+			"cssClass" : "vjs-dark",
+			"url" : "http://www.topshop.com/wcsstore/ConsumerDirectStorefrontAssetStore/images/colors/color2/v3/css/videojs/vjs-skin-custom-1.css"
+		},
+		{
+			"name" : "Burton Light",
+			"cssClass" : "vjs-light",
+			"url" : "http://www.topshop.com/wcsstore/ConsumerDirectStorefrontAssetStore/images/colors/color2/v3/css/videojs/vjs-skin-custom-2.css"
+		}
+	]
+}

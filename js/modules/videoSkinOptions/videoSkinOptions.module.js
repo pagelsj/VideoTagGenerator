@@ -1,6 +1,4 @@
 VideoTagGen.directive("videoSkinOptions", function () {
-	'use strict';
-	
 	return {
 		restrict 	: "C",
 		templateUrl : "./js/modules/videoSkinOptions/videoSkinOptions.template.html",

@@ -1,0 +1,21 @@
+{
+	"videoURL" : "http://www.topman.com/cms_videos/",
+	"imageURL" : "http://media.topman.com/wcsstore/TopMan/images/category_icons/",
+	"availableSkins" :[
+		{
+			"name": "Default",
+			"cssClass" : "",
+			"url" : "http://vjs.zencdn.net/5.3.0/video-js.css"
+		},
+		{
+			"name" : "Topman Dark",
+			"cssClass" : "vjs-dark",
+			"url" : "http://www.topman.com/wcsstore/ConsumerDirectStorefrontAssetStore/images/colors/color6/v4/css/videojs/vjs-skin-custom-1.css"
+		},
+		{
+			"name" : "Topman Light",
+			"cssClass" : "vjs-light",
+			"url" : "http://www.topman.com/wcsstore/ConsumerDirectStorefrontAssetStore/images/colors/color6/v4/css/videojs/vjs-skin-custom-2.css"
+		}
+	]
+}

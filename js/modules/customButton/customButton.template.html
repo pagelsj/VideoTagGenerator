@@ -1,4 +1,4 @@
-<section class="col-md-12">
+<section class="col-md-6">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Add custom Play and Replay buttons</h3>
@@ -9,11 +9,11 @@
 				<div class="col-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">Custom Play Button</span>
-						<input type="text" input-prepend="{{imageURL}}" class="form-control" placeholder="{{imageURL}}" ng-model="customPlayButton" data-buttonType="customPlayButton" ng-model-options="{ updateOn: 'blur'}">
+						<input type="text" class="form-control" placeholder="{{imageURL}}" ng-model="customPlayButton" data-buttonType="customPlayButton" ng-model-options="{ updateOn: 'blur'}">
 					</div>
 				</div>
 				<div class="col-sm-2">
-					<img ng-if="customPlayButton" ng-src="{{customPlayButton}}" class="customPlayButtonImage center-block" data-buttonType="customPlayButton" width="{{customButtonWidth}}" height="{{customButtonHeight}}" imageonload />
+					<img ng-if="customPlayButton" ng-src="{{imageURL}}{{customPlayButton}}" class="customPlayButtonImage center-block" data-buttonType="customPlayButton" width="{{customButtonWidth}}" height="{{customButtonHeight}}" imageonload />
 				</div>
 			</div>
 
@@ -21,11 +21,11 @@
 				<div class="col-sm-10">
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">Custom Replay Button</span>
-						<input type="text" input-prepend="{{imageURL}}" class="form-control" placeholder="{{imageURL}}" ng-model="customReplayButton" data-buttonType="customReplayButton" ng-model-options="{ updateOn: 'blur'}">
+						<input type="text" class="form-control" placeholder="{{imageURL}}" ng-model="customReplayButton" data-buttonType="customReplayButton" ng-model-options="{ updateOn: 'blur'}">
 					</div>
 				</div>
 				<div class="col-sm-2">
-					<img ng-if="customReplayButton" ng-src=" {{customReplayButton}}" class="customReplayButtonImage center-block" data-buttonType="customReplayButton" width="{{customButtonWidth}}" height="{{customButtonHeight}}" imageonload />
+					<img ng-if="customReplayButton" ng-src="{{imageURL}}{{customReplayButton}}" class="customReplayButtonImage center-block" data-buttonType="customReplayButton" width="{{customButtonWidth}}" height="{{customButtonHeight}}" imageonload />
 				</div>
 			</div>
 

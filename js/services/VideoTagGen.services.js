@@ -1,7 +1,6 @@
 var VideoTagGen = (VideoTagGen) ? VideoTagGen : {};
 
 VideoTagGen.service("VideoTagGenServices", ["$q", "settings", function ($q, settings) {
-	'use strict';
 	var that = this;
 	
 	this.createPreview = function (scope, videoContainer) {
@@ -16,53 +15,47 @@ VideoTagGen.service("VideoTagGenServices", ["$q", "settings", function ($q, sett
 
 
 /*
-	DIRECTIVE : videoPaths.directive.js
+	DIRECTIVE : videoPaths.module.js
 	LOOP THROUGH THE IDEO FORMATS AND ADD THEM
 */
 			for(var format in scope.videoFormat) {
 				var sourceTag = document.createElement("source");
 					sourceTag.setAttribute("type", "video/"+format);
-					sourceTag.setAttribute("src", scope.videoFormat[format]);
+					sourceTag.setAttribute("src", scope.videoURL + scope.videoFormat[format]);
 				videoNode.appendChild(sourceTag);
 			}
 
 
 
 /*
-	DIRECTIVE : tracking.directive.js
-	Adds tracking
-*/
-			if(scope.trackingTag)
-				videoNode.setAttribute("trackingTagData", scope.trackingTag);
-
-
-/*
-	DIRECTIVE : videoFormatLarge.directive.js
+	DIRECTIVE : videoFormatLarge.module.js
 	ADD THE URLS FOR THE LARGE VIDEOS
 */			
 			if (scope.videoFormatLarge.sources) {
-				that.createDataSetup("fullscreenSourceSwitch", scope.videoFormatLarge);
+				that.createDataSetup("fullscreenSourceSwitch", scope.videoURL + scope.videoFormatLarge);
 			}
 
 
 
 /*
-	DIRECTIVE : posterImage.directive.js
+	DIRECTIVE : posterImage.module.js
 	ADD POSTER IMAGE
 */			
 			if (scope.posterImage) {
-				that.createDataSetup("poster",scope.posterImage);
+				that.createDataSetup("poster",scope.imageURL + scope.posterImage);
 			}
 
 
 
 /*
-	DIRECTIVE : customPlayButton.directive.js
+	DIRECTIVE : customPlayButton.module.js
 	CREATE THE CUSTOM PLAY BUTTON STYLING IF A URL HAS BEEN PROVIDED.
 */
+			var customButtonStyling;
+			
 			if (scope.customPlayButton) {
-				var customButtonStyling = document.createElement("style");
-				var buttonStyle = that.buildCustomButtonStyles(scope, "vjs-big-play-button", scope.customPlayButton, scope.customButtonPosition);
+				customButtonStyling = document.createElement("style");
+				var buttonStyle = that.buildCustomButtonStyles(scope, "vjs-big-play-button", scope.customPlayButton);
 					
 				customButtonStyling.type = "text/css";
 
@@ -80,17 +73,17 @@ VideoTagGen.service("VideoTagGenServices", ["$q", "settings", function ($q, sett
 
 
 /*
-	DIRECTIVE : videoSizes.directive.js
+	DIRECTIVE : videoSizes.module.js
 	ADD THE HEIGHT AND WIDTH PROPERTIES IF THEY HAVE BEEN SET
 */	
 			if(scope.videoSize){
 				if(scope.videoSize.height) { 
 					//videoNode.setAttribute("height", scope.videoSize.height);
-					that.createDataSetup("height", scope.videoSize.height+"%");
+					that.createDataSetup("height", scope.videoSize.height);
 				}
 				if(scope.videoSize.width) {
 					//videoNode.setAttribute("width", scope.videoSize.width);
-					that.createDataSetup("width", scope.videoSize.width+"%");
+					that.createDataSetup("width", scope.videoSize.width);
 				}
 			}
 
@@ -102,27 +95,27 @@ VideoTagGen.service("VideoTagGenServices", ["$q", "settings", function ($q, sett
 
 
 /*
-	DIRECTIVE : videoOptions.directive.js
+	DIRECTIVE : videoOptions.module.js
 	ADD THE EXTRA OPTIONS TO THE VIDEO TAG
 */
-			for (var i in scope.options) {
-				that.createDataSetup(i, scope.options[i]);
+			for (var option in scope.options) {
+				that.createDataSetup(option, scope.options[option]);
 			}
 
 
 
 /*
-	DIRECTIVE : videoJSComponents.directive.js
+	DIRECTIVE : videoJSComponents.module.js
 	ADD THE VIDEOJS COMPONENT OPTIONS TO THE VIDEO TAG
 */
-			for (var i in scope.vjsComponents) {
-				that.createDataSetup(i, scope.vjsComponents[i]);
+			for (var component in scope.vjsComponents) {
+				that.createDataSetup(component, scope.vjsComponents[component]);
 			}
 
 
 
 /*
-	DIRECTIVE : videoSkins.directive.js
+	DIRECTIVE : videoSkins.module.js
 	ADD THE SELECTED SKIN CLASS TO THE VIDEO AND ADD THE <link> TO THE CSS FILE
 */		
 			var currentClass = videoNode.getAttribute("class"),
@@ -130,6 +123,16 @@ VideoTagGen.service("VideoTagGenServices", ["$q", "settings", function ($q, sett
 				cssLink = "&lt;link rel='stylesheet' href='"+scope.videoSkin.url+"' /&gt;";
 			
 			videoNode.setAttribute("class", currentClass + " " + scope.videoSkin.cssClass);
+
+
+
+/*
+	DIRECTIVE : trackingTag.module.js
+	ADD THE SELECTED SKIN CLASS TO THE VIDEO AND ADD THE <link> TO THE CSS FILE
+*/		
+			
+			if(scope.trackingTag)
+				videoNode.setAttribute("data-tracked-video-name", scope.trackingTag);
 
 
 
@@ -163,7 +166,7 @@ VideoTagGen.service("VideoTagGenServices", ["$q", "settings", function ($q, sett
 			console.log("THERE SEEMS TO HAVE BEEN AN ERROR: ", e);
 			return e;
 		
-		};
+		}
 	};
 
 
@@ -214,66 +217,17 @@ VideoTagGen.service("VideoTagGenServices", ["$q", "settings", function ($q, sett
 
 
 	// METHOD USED TO CREATE THE CUSTOM PLAY BUTTON STYLING.
-	this.buildCustomButtonStyles = function (scope, buttonType, buttonUrl, btnPosition) {
-
-		var positions = JSON.parse(btnPosition);
-		var cssPositions = {
-			top:0,
-			left:0,
-			marginTop:0,
-			marginLeft:0
-		};
-
-		switch(positions.v) {
-			case "top":
-				console.log("top");
-				cssPositions.top = "0";
-				cssPositions.marginTop = "20px";
-				break;
-			
-			case "bottom":
-				console.log("bottom");
-				cssPositions.top = "100%";
-				cssPositions.marginTop = "-" + (scope.customButtonHeight + 20) +"px";
-				break;
-
-			default:
-				console.log("middle");
-				cssPositions.top = "50%";
-				cssPositions.marginTop = "-" + (scope.customButtonHeight / 2) +"px";
-				break;
-		};
-
-		switch(positions.h) {
-			case "left":
-				console.log("left");
-				cssPositions.left = "0";
-				cssPositions.marginLeft = "20px";
-				break;
-			
-			case "right":
-				console.log("right");
-				cssPositions.marginLeft = "-" + (scope.customButtonWidth + 20) +"px";
-				cssPositions.left = "100%";
-				break;
-
-			default:
-				console.log("center");
-				cssPositions.left = "50%";
-				cssPositions.marginLeft = "-" + (scope.customButtonWidth / 2) +"px";
-				break;
-		};
-
+	this.buildCustomButtonStyles = function (scope, buttonType, buttonUrl) {
 
 		var style = [
 			'.' + buttonType + '{',
 				'width:'+ scope.customButtonWidth +'px !important;',
 				'height:'+ scope.customButtonHeight +'px !important;',
-				'top:' + cssPositions.top + ' !important;',
-				'left:' + cssPositions.left + ' !important;',
+				'top:50% !important;',
+				'left:50% !important;',
 				'border:0 !important;',
 				'box-shadow:0 !important;',
-				'margin:' + cssPositions.marginTop + ' 0 0 ' + cssPositions.marginLeft + ' !important;',
+				'margin:-' + scope.customButtonHeight / 2 + 'px 0 0 -' + scope.customButtonWidth / 2 + 'px !important;',
 				'background:url("' + scope.imageURL + buttonUrl + '") no-repeat 50% 50%/100% 100% !important;',
 			'}',
 			'.' + buttonType + ':before{',

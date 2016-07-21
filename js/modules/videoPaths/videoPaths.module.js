@@ -1,6 +1,4 @@
 VideoTagGen.directive("videoPaths", function () {
-	'use strict';
-	
 	return {
 		restrict 	: "C",
 		templateUrl : "./js/modules/videoPaths/videoPaths.template.html",
@@ -14,9 +12,9 @@ VideoTagGen.directive("videoPaths", function () {
 				var dataFormat = Object.keys(newVal)[0];
 
 				// Test that a value has been entered. Otherwise, delete the key/value pair from videoFormat[OBJECT]
-				if(newVal[dataFormat] == "" || newVal[dataFormat] == $scope.videoURL) delete $scope.videoFormat[dataFormat];
+				if(newVal[dataFormat] === "" || newVal[dataFormat] == $scope.videoURL) delete $scope.videoFormat[dataFormat];
 
-				(Object.keys($scope.videoFormat).length) ? $scope.enablePreview = true : $scope.enablePreview = false;
+				$scope.enablePreview = (Object.keys($scope.videoFormat).length) ? true : false;
 					// Test that at least 1 videoFormat has been entered in order to enablePreview[BOOLEAN]
 
 				if(!$scope.videoFormatLarge || !$scope.videoFormatLarge.sources) 

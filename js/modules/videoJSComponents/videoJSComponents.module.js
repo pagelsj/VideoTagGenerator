@@ -1,6 +1,4 @@
 VideoTagGen.directive("videoJSComponents", function () {
-	'use strict';
-	
 	return {
 		restrict 	: "C",
 		templateUrl : "./js/modules/videoJSComponents/videoJSComponents.template.html",
